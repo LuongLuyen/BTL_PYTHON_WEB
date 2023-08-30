@@ -10,3 +10,6 @@ class Product(models.Model):
   status = models.CharField(max_length=50)
   category = models.CharField(max_length=50)
   price = models.CharField(max_length=50)
+  
+  def __str__(self):
+    return self.userid

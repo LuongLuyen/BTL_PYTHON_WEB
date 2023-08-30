@@ -46,7 +46,7 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <a href="{% url 'product' %}"> Quần áo</a>
+                            <a href="/"> Quần áo</a>
                         </li>
                         <li class="list-group-item">Laptop</li>
                         <li class="list-group-item">Tai nghe</li>
@@ -117,7 +117,12 @@
                         </div>
                     </div>
                 </div>
-                <h2>{{product.price}}</h2>
+                <ul>
+                    {% for product in product %}
+                        <li>{{ product.price }}</li>
+                    {% endfor %}
+
+                </ul>
             </div>
         </div>
     </div>
