@@ -7,3 +7,6 @@ def getHome(request):
 
 def getLogin(request):
     return render(request, 'pages/login.html')
+
+def getProduct(request):
+    return render(request, 'pages/product.html')
