@@ -10,3 +10,8 @@ def getLogin(request):
 
 def getProduct(request):
     return render(request, 'pages/product.html')
+
+def getAdmin(request):
+    return render(request, 'pages/admin.html')
+def getManage(request):
+    return render(request, 'pages/manage.html')

@@ -1,0 +1,51 @@
+{% extends "pages/base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+        <div class= "d-flex justify-content-center">
+            <div class="m-5 w-50">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                      Profile
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Name</li>
+                      <li class="list-group-item">Đơn mua</li>
+                      <li class="list-group-item">Thông báo</li>
+                    </ul>
+                  </div>             
+            </div>
+
+            <div class ="m-5 w-100">
+                <div class="card text-center">
+                    <div class="card-header">
+                      <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="true" href="#">Tất cả</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Chờ thanh toán</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Vận chuyển</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đang giao</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hoàn thành</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đã hủy</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Special title treatment</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
