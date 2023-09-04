@@ -1,22 +1,15 @@
 from django.shortcuts import render,redirect
-from .models import Product
-from .forms import ProductForm
-from .models import User
-from .forms import UserForm
+from .models import Product,User
+from .forms import UserForm,ProductForm
 
 def getHome(request):
-    product = Product.objects.all()
-    return render(request, 'pages/home.html', {'product': product})
-
-def postHome(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('item-list')
+        category = request.POST.get('data') 
+        product = Product.objects.filter(category=category)
+        return render(request, 'pages/home.html', {'product': product})
     else:
-        form = ProductForm()
-    return render(request, 'pages/home.html', {'form': form})
+        product = Product.objects.all()
+        return render(request, 'pages/home.html', {'product': product})
 
 
 def getLogin(request):

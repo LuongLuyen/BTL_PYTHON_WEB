@@ -9,10 +9,32 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            Quần áo
+                            <form method="post">
+                                {% csrf_token %}
+                                <button style=" border: none; background: none;" type="submit">
+                                <input type="hidden" id="data" name="data" value="ao-nam" required>
+                                    Quần áo nam
+                                </button>
+                            </form>
                         </li>
-                        <li class="list-group-item">Laptop</li>
-                        <li class="list-group-item">Tai nghe</li>
+                        <li class="list-group-item">
+                            <form method="post">
+                                {% csrf_token %}
+                                <button style=" border: none; background: none;" type="submit">
+                                <input type="hidden" id="data" name="data" value="lap-top" required>
+                                    Lap top
+                                </button>
+                            </form>
+                        </li>
+                        <li class="list-group-item">
+                            <form method="post">
+                                {% csrf_token %}
+                                <button style=" border: none; background: none;" type="submit">
+                                <input type="hidden" id="data" name="data" value="tai-nghe" required>
+                                    Tai nghe
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -43,19 +65,19 @@
 
                 <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
                     {% for product in product %}
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src= {{ product.thumbnail }} class="card-img-top" alt="/">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ product.price }} Vnd</h5>
-                                    <p class="card-text">{{ product.shortDescription }}</p>
-                                    <span class="card-title">Đã bán: {{ product.status }} sản phẩm</span>
-                                </div>
-                                <a href="/product">
-                                    <button type="button" class="btn btn-warning w-50 m-2">Mua ngay</button>
-                                </a>
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src= {{ product.thumbnail }} class="card-img-top" alt="/">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.price }} Vnd</h5>
+                                <p class="card-text">{{ product.shortDescription }}</p>
+                                <span class="card-title">Đã bán: {{ product.status }} sản phẩm</span>
                             </div>
+                            <a href="/product">
+                                <button type="button" class="btn btn-warning w-50 m-2">Mua ngay</button>
+                            </a>
                         </div>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
