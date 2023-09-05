@@ -2,7 +2,7 @@
 {% block title %} Login {% endblock %}
 {% block content %}
     <div class="d-flex justify-content-center mt-5 border">
-        <form method="post">
+        <form method="post" action="{% url 'home:register' %}">
             {% csrf_token %}
             <div class="form-outline mb-4 mt-4">
                 <input type="email" id="id_email" class="form-control" name="email" required />

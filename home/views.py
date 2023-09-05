@@ -17,10 +17,24 @@ def getHome(request):
 
 
 def getLogin(request):
-    return render(request, 'pages/login.html')
+    if request.method == 'POST':
+        userName = request.POST.get('userName') 
+        password = request.POST.get('password') 
+        if(userName== "admin123" and password== "admin123"):
+            product = Product.objects.all()
+            return render(request, 'pages/home.html', {'product': product})
+        return render(request, 'pages/login.html')
+    else:
+        return render(request, 'pages/login.html')
 
 def getProduct(request):
-    return render(request, 'pages/product.html')
+    if request.method == 'POST':
+        id = request.POST.get('id_product')
+        if(id!=None):
+            product = Product.objects.get(id=id)
+            return render(request, 'pages/manage.html', {'product': product})
+    else:
+        return render(request, 'pages/manage.html')
 
 def getAdmin(request):
     return render(request, 'pages/admin.html')

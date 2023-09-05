@@ -3,6 +3,8 @@
 {% block content %}
     <div class = "d-flex justify-content-center mt-5">
         <div class="card mb-3 d-flex justify-content-center" style="max-width: 1200px;">
+            <form method="post" action="{% url 'home:product' %}">
+                {% csrf_token %}
             <div class="row g-0">
                 <div class="col-md-4">
                 <img src={{ product.thumbnail }} class="img-fluid rounded-start" alt="/">
@@ -29,10 +31,12 @@
                         <button type="button" class="btn btn-outline-warning">Vàng</button>
                     </p>
                     <h5 class="card-title">Price: {{ product.price }} vnd</h5>
-                    <button type="button" class="btn btn-warning">Mua ngay</button>
+                    <input type="hidden" id="data" name="id_product" value={{ product.id }} required>
+                    <button type="submit" class="btn btn-warning">Mua ngay</button>
                 </div>
                 </div>
             </div>
+        </form>
         </div>
     </div>
 {% endblock %}

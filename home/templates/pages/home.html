@@ -9,7 +9,7 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <form method="post">
+                            <form method="post" action="{% url 'home:home' %}">
                                 {% csrf_token %}
                                 <button style=" border: none; background: none;" type="submit">
                                 <input type="hidden" id="data" name="data" value="ao-nam" required>
@@ -18,7 +18,7 @@
                             </form>
                         </li>
                         <li class="list-group-item">
-                            <form method="post">
+                            <form method="post"  action="{% url 'home:home' %}">
                                 {% csrf_token %}
                                 <button style=" border: none; background: none;" type="submit">
                                 <input type="hidden" id="data" name="data" value="lap-top" required>
@@ -27,7 +27,7 @@
                             </form>
                         </li>
                         <li class="list-group-item">
-                            <form method="post">
+                            <form method="post"  action="{% url 'home:home' %}">
                                 {% csrf_token %}
                                 <button style=" border: none; background: none;" type="submit">
                                 <input type="hidden" id="data" name="data" value="tai-nghe" required>
@@ -36,7 +36,7 @@
                             </form>
                         </li>
                         <li class="list-group-item">
-                            <form method="post">
+                            <form method="post"  action="{% url 'home:home' %}">
                                 {% csrf_token %}
                                 <button style=" border: none; background: none;" type="submit">
                                 <input type="hidden" id="data" name="data" value="ti-vi" required>
@@ -45,7 +45,7 @@
                             </form>
                         </li>
                         <li class="list-group-item">
-                            <form method="post">
+                            <form method="post"  action="{% url 'home:home' %}">
                                 {% csrf_token %}
                                 <button style=" border: none; background: none;" type="submit">
                                 <input type="hidden" id="data" name="data" value="dien-thoai" required>
@@ -83,15 +83,15 @@
 
                 <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
                     {% for product in product %}
-                    <form method="post">
+                    <form method="post" action="{% url 'home:home' %}">
                         {% csrf_token %}
                             <div class="col">
                                 <div class="card h-100">
                                     <img src= {{ product.thumbnail }} class="card-img-top" alt="/">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ product.price }} Vnd</h5>
+                                        <h5 class="card-title" style="color: #D41830;">đ  {{ product.price }}</h5>
                                         <p class="card-text">{{ product.shortDescription }}</p>
-                                        <span class="card-title">Đã bán: {{ product.status }} sản phẩm</span>
+                                        <span class="card-title" style="color: #D41830;">Đã bán: {{ product.status }} sản phẩm</span>
                                     </div>
                                     <input type="hidden" id="data" name="id_product" value={{ product.id }} required>
                                     <button type="submit" class="btn btn-warning w-50 m-2">Mua ngay</button>

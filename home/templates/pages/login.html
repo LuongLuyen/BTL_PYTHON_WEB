@@ -2,14 +2,15 @@
 {% block title %} Login {% endblock %}
 {% block content %}
     <div class="d-flex justify-content-center mt-5 border">
-        <form >
+        <form method="post" action="{% url 'home:login' %}">
+            {% csrf_token %}
             <div class="form-outline mb-4 mt-4">
-                <input type="text" id="form2Example1" class="form-control" />
-                <label class="form-label" for="form2Example1">Tến đăng nhập</label>
+                <input type="text" id="id_username" class="form-control" name="userName" required />
+                <label class="form-label" for="id_username">Tến đăng nhập</label>
             </div>
             <div class="form-outline mb-4">
-                <input type="password" id="form2Example2" class="form-control" />
-                <label class="form-label" for="form2Example2">mật khẩu</label>
+                <input type="password" id="id_password" class="form-control" name="password" required />
+                <label class="form-label" for="id_password">mật khẩu</label>
             </div>
             <div class="row mb-4">
                 <div class="col d-flex justify-content-center"> 
@@ -22,11 +23,9 @@
                 <a href="#!">Quên mật khẩu?</a>
                 </div>
             </div>
-            <a href="/home">
-                <button type="button" class="w-100 btn btn-primary btn-block mb-4">
-                    Đăng nhập
-                </button>
-            </a>
+            <button type="submit" class="w-100 btn btn-primary btn-block mb-4">
+                Đăng nhập
+            </button>
             <div class="text-center">
                 <p>Bạn chưa có tài khoản? <a href="/register">Đăng ký</a></p>
             </div>
