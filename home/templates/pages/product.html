@@ -5,11 +5,11 @@
         <div class="card mb-3 d-flex justify-content-center" style="max-width: 1200px;">
             <div class="row g-0">
                 <div class="col-md-4">
-                <img src="https://down-vn.img.susercontent.com/file/sg-11134211-23020-ttr6qdkyywnv92" class="img-fluid rounded-start" alt="/">
+                <img src={{ product.thumbnail }} class="img-fluid rounded-start" alt="/">
                 </div>
                 <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">Áo Phông Nam Layer Cộc Tay Form Rộng</h5>
+                    <h5 class="card-title">{{ product.shortDescription }}</h5>
                     <p class="card-text">Chúng tôi chỉ muốn mang đến cho bạn những sản phẩm tốt nhất, thịnh hành nhất, chất lượng tốt nhất và giá rẻ nhất.
                         Thời trang là một phần của không khí hàng ngày và nó thay đổi mọi lúc với tất cả các sự kiện.! 
                         Hãy bắt đầu mua sắm vui vẻ!</p>
@@ -28,7 +28,7 @@
                         <button type="button" class="btn btn-outline-danger">Đỏ</button>
                         <button type="button" class="btn btn-outline-warning">Vàng</button>
                     </p>
-                    <h5 class="card-title">Price: 500.000 vnd</h5>
+                    <h5 class="card-title">Price: {{ product.price }} vnd</h5>
                     <button type="button" class="btn btn-warning">Mua ngay</button>
                 </div>
                 </div>

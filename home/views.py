@@ -5,6 +5,10 @@ from .forms import UserForm,ProductForm
 def getHome(request):
     if request.method == 'POST':
         category = request.POST.get('data') 
+        id = request.POST.get('id_product')
+        if(id!=None):
+            product = Product.objects.get(id=id)
+            return render(request, 'pages/product.html', {'product': product})
         product = Product.objects.filter(category=category)
         return render(request, 'pages/home.html', {'product': product})
     else:
