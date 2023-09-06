@@ -2,34 +2,29 @@
 {% block title %} Login {% endblock %}
 {% block content %}
 <h1>Trang quản trị</h1>
-    <table class="table table-striped table-hover mt-5">
-        <thead>
+{% csrf_token %}
+<table class="table table-striped table-hover mt-5">
+    <thead>
         <tr>
             <th scope="col">Stt</th>
             <th scope="col">Tên</th>
             <th scope="col">Số lượng</th>
             <th scope="col">Giá</th>
+            <th scope="col">Sữa</th>
+            <th scope="col">Xóa</th>
         </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Sản phẩm</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Sản phẩm</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Sản phẩm</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
+    </thead>
+    {% for product in product %}
+    <tbody>
+            <tr>
+                <th scope="row">{{ product.id }}</th>
+                <td class="w-50">{{ product.shortDescription }}</td>
+                <td class="w-10">{{ product.status }}</td>
+                <td class="w-10">{{ product.price }}</td>
+                <td class="w-10">v</td>
+                <td class="w-10">x</td>
+            </tr>
+         </tbody>
+            {% endfor %}
+    </table>   
 {% endblock %}

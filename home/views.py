@@ -20,10 +20,15 @@ def getLogin(request):
     if request.method == 'POST':
         userName = request.POST.get('userName') 
         password = request.POST.get('password') 
-        if(userName== "admin123" and password== "admin123"):
-            product = Product.objects.all()
-            return render(request, 'pages/home.html', {'product': product})
-        return render(request, 'pages/login.html')
+        try:
+            userDB = User.objects.get(userName=userName)
+            passDB = User.objects.get(password=password)
+            if(userDB!=None and passDB!=None):
+                product = Product.objects.all()
+                return render(request, 'pages/home.html', {'product': product})
+        except:
+            return render(request, 'pages/login.html')
+
     else:
         return render(request, 'pages/login.html')
 
@@ -37,9 +42,11 @@ def getProduct(request):
         return render(request, 'pages/manage.html')
 
 def getAdmin(request):
-    return render(request, 'pages/admin.html')
+    product = Product.objects.all()
+    return render(request, 'pages/admin.html', {'product': product})
 def getManage(request):
-    return render(request, 'pages/manage.html')
+    product = Product.objects.get(id=1)
+    return render(request, 'pages/manage.html',{'product': product})
 
 
 

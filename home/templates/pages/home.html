@@ -94,7 +94,14 @@
                                         <span class="card-title" style="color: #D41830;">Đã bán: {{ product.status }} sản phẩm</span>
                                     </div>
                                     <input type="hidden" id="data" name="id_product" value={{ product.id }} required>
-                                    <button type="submit" class="btn btn-warning w-50 m-2">Mua ngay</button>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-warning w-50 m-2">Mua ngay</button>
+                                        <a class="btn btn-danger w-50 m-2" href="/manage">
+                                        <button type="button" style=" border: none; background: none;">
+                                            Giỏ hàng
+                                        </button>
+                                    </a>
+                                    </div>
                                 </div>
                             </div>
                     </form>
