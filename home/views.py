@@ -2,10 +2,20 @@ from django.shortcuts import render,redirect
 from .models import Product,User
 from .forms import UserForm,ProductForm
 
+
 def getHome(request):
     if request.method == 'POST':
         category = request.POST.get('data') 
         id = request.POST.get('id_product')
+        search = request.POST.get('search')
+        if(search!= None):
+            product = Product.objects.all()
+            for item in product:
+               index = item.shortDescription.find(search)
+               list = []
+               if(index!=-1):
+                   list.append(item)
+                   return render(request, 'pages/home.html', {'product': list})
         if(id!=None):
             product = Product.objects.get(id=id)
             return render(request, 'pages/product.html', {'product': product})
