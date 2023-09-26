@@ -11,9 +11,8 @@ def getHome(request):
         if(search!= None):
             product = Product.objects.all()
             for item in product:
-               index = item.shortDescription.find(search)
                list = []
-               if(index!=-1):
+               if search in item.shortDescription:
                    list.append(item)
                    return render(request, 'pages/home.html', {'product': list})
         if(id!=None):
