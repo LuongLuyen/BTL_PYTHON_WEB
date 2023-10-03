@@ -2,6 +2,7 @@
 {% block title %} Add {% endblock %}
 {% block content %}
 <h1>Thêm sản phẩm</h1>
+{% if product%}
 <table class="table table-striped table-hover mt-5">
     <thead>
         <tr>
@@ -24,30 +25,32 @@
             </tr>
          </tbody>
 </table>   
+{% endif %}
+
     <form method="post" action="{% url 'home:add' %}">
         {% csrf_token %}
         <div class="form-outline mb-4 mt-4">
+            <label class="form-label" for="id_shortDescription">Tên</label>
             <input type="text" id="id_shortDescription" class="form-control" name="shortDescription" required />
-            <label class="form-label" for="id_shortDescription">Name</label>
         </div>
         <div class="form-outline mb-4">
+            <label class="form-label" for="id_status">Số lượng</label>
             <input type="text" id="id_status" class="form-control" name="status" required />
-            <label class="form-label" for="id_status">soluong</label>
         </div>
         <div class="form-outline mb-4 mt-4">
+            <label class="form-label" for="id_price">Giá (đ)</label>
             <input type="text" id="id_price" class="form-control" name="price" required />
-            <label class="form-label" for="id_price">price</label>
         </div>
         <div class="form-outline mb-4">
-            <input type="text" id="id_thumbnail" class="form-control" name="thumbnail" required />
-            <label class="form-label" for="id_thumbnail">thumbnail</label>
+            <label class="form-label" for="id_thumbnail">Thumbnail</label>
+            <input type="text" id="id_thumbnail" class="form-control" name="thumbnail" placeholder="Link sản phẩm" required />
         </div>
         <div class="form-outline mb-4 mt-4">
-            <input type="text" id="id_category" class="form-control" name="category" required />
-            <label class="form-label" for="id_category">the loai</label>
+            <label class="form-label" for="id_category">Thể loại</label>
+            <input type="text" id="id_category" class="form-control" name="category" placeholder="ao-nam,dien-thoai,lap-top,tai-nghe" required />
         </div>
         <input type="hidden" id="dataU" name="dataU" value={{ product.id }} required>
-        <button type="submit" class="w-100 btn btn-primary btn-block mb-4">
+        <button type="submit" class="w-10 btn btn-primary btn-block mb-4">
             Submit
         </button>
     </form>

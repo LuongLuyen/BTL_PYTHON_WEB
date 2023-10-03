@@ -1,7 +1,12 @@
 {% extends "pages/base.html" %}
-{% block title %} Login {% endblock %}
+{% block title %} Admin {% endblock %}
 {% block content %}
 <h1>Trang quản trị</h1>
+<a href="../add" >
+<button class="btn btn-warning" type="text">
+        Thêm sản phẩm
+    </button>
+</a>
 {% csrf_token %}
 <table class="table table-striped table-hover mt-5">
     <thead>
@@ -26,7 +31,7 @@
                         {% csrf_token %}
                         <button style=" border: none; background: none;" type="submit">
                         <input type="hidden" id="data" name="data" value={{ product.id }} required>
-                           v
+                        ✎
                         </button>
                     </form>
                 </td>
@@ -35,7 +40,7 @@
                         {% csrf_token %}
                         <button style=" border: none; background: none;" type="submit">
                         <input type="hidden" id="dataD" name="dataD" value={{ product.id }} required>
-                           x
+                           X
                         </button>
                     </form>
                 </td>

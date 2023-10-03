@@ -1,5 +1,5 @@
 {% extends "pages/base.html" %}
-{% block title %} Manager {% endblock %}
+{% block title %} Cart {% endblock %}
 {% block content %}
         <div class= "d-flex justify-content-center">
             <div class="m-5 w-10">
@@ -45,11 +45,13 @@
                     <div class="card-body">
                       <div class="card mb-3" style="max-width: 1000px;">
                         <div class="row g-0">
+                          {% for product in product %}
                           <div class="col-md-4">
                             <img src={{ product.thumbnail }} class="img-fluid rounded-start" alt="Trống">
                           </div>
                           <div class="col-md-8">
                             <div class="card-body">
+                             
                               <h5 class="card-title">{{ product.shortDescription }}</h5>
                               <div class="d-flex justify-content-flex-start mt-5">
                                 <p class="card-text">
@@ -60,12 +62,15 @@
                                     <button type="button" class="btn btn-outline-warning">Vàng</button>
                                 </p>
                               </div>
-                              <div class="card-text m-2 d-flex justify-content-flex-start">Số lượng: 2</div>
-                              <div class="card-title m-2 d-flex justify-content-flex-start" style="color: #D41830;">Tổng: đ {{product.price}}</div>
-                              <div class="d-flex justify-content-flex-start">
-                                <button type="button" class="btn btn-warning m-2">Mua ngay</button>
-                              </div>
+                              <div class="card-text m-2 d-flex justify-content-flex-start">Số lượng: 1</div>
+                              <div class="card-title m-2 d-flex justify-content-flex-start" style="color: #D41830;">Giá: đ {{product.price}}</div>
+                              <br/>
                             </div>
+                          </div>
+                          {% endfor %}
+                          <div class="d-flex justify-content-space-between w-100">
+                            <button type="button" class="btn btn-warning m-2">Mua ngay</button>
+                            <button type="button" class="btn btn-warning m-2">Tổng: xxxxx đ </button>
                           </div>
                         </div>
                       </div>

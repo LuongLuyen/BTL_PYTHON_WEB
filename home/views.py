@@ -45,9 +45,9 @@ def getProduct(request):
         id = request.POST.get('id_product')
         if(id!=None):
             product = Product.objects.get(id=id)
-            return render(request, 'pages/manage.html', {'product': product})
+            return render(request, 'pages/cart.html', {'product': product})
     else:
-        return render(request, 'pages/manage.html')
+        return render(request, 'pages/cart.html')
 
 
 def getAdmin(request):
@@ -77,9 +77,9 @@ def getAdd(request):
     return render(request, 'pages/add.html', {'form': form})
 
 
-def getManage(request):
-    cart = Cart.objects.get(id=2)
-    return render(request, 'pages/manage.html',{'product': cart})
+def getCart(request):
+    cart = Cart.objects.all()
+    return render(request, 'pages/cart.html',{'product': cart})
 
 def createUser(request):
     if request.method == 'POST':
