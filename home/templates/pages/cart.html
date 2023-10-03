@@ -19,27 +19,48 @@
                 <div class="card text-center">
                     <div class="card-header">
                       <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item">
-                          <a class="nav-link disabled" aria-current="true" href="#">Tất cả</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Chờ thanh toán</a>
-                        </li>
-                        <!-- {% if product.transport == "thanh-toan" %}
-                        {% else %}
-                        {% endif %} -->
-                          <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Vận chuyển</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đang giao</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hoàn thành</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đã hủy</a>
-                          </li>
+                        <form method="post" action="{% url 'home:cart' %}">
+                            {% csrf_token %}
+                            <button style=" border: none; background: none; width: 100px;" type="submit">
+                            <input type="hidden" id="data" name="data" value="all" required>
+                            Tất cả
+                            </button>
+                          </form>
+                        <form method="post" action="{% url 'home:cart' %}">
+                            {% csrf_token %}
+                            <button style=" border: none; background: none; width: 200px;" type="submit">
+                            <input type="hidden" id="data" name="data" value="thanh-toan" required>
+                            Chờ thanh toán
+                            </button>
+                          </form>
+                        <form method="post" action="{% url 'home:cart' %}">
+                            {% csrf_token %}
+                            <button style=" border: none; background: none; width: 100px;" type="submit">
+                            <input type="hidden" id="data" name="data" value="van-chuyen" required>
+                            Vận chuyển
+                            </button>
+                          </form>
+                        <form method="post" action="{% url 'home:cart' %}">
+                            {% csrf_token %}
+                            <button style=" border: none; background: none; width: 100px;" type="submit">
+                            <input type="hidden" id="data" name="data" value="dang-giao" required>
+                            Đang giao
+                            </button>
+                          </form>
+                        <form method="post" action="{% url 'home:cart' %}">
+                            {% csrf_token %}
+                            <button style=" border: none; background: none; width: 100px;" type="submit">
+                            <input type="hidden" id="data" name="data" value="da-huy" required>
+                            Hoàn thành
+                            </button>
+                          </form>
+                        <form method="post" action="{% url 'home:cart' %}">
+                            {% csrf_token %}
+                            <button style=" border: none; background: none; width: 100px;" type="submit">
+                            <input type="hidden" id="data" name="data" value="ao-nam" required>
+                            Đã hủy
+                            </button>
+                          </form>
                       </ul>
                     </div>
                     <div class="card-body">
@@ -53,18 +74,16 @@
                             <div class="card-body">
                              
                               <h5 class="card-title">{{ product.shortDescription }}</h5>
-                              <div class="d-flex justify-content-flex-start mt-5">
+                              <span>Bấm theo dõi shop để nhận được thông báo chương trình sale sinh nhật shop, sale black Friday và rất nhiều chương trình ưu đãi khác.
+                              </span>
+                              <div class="d-flex justify-content-flex-start mt-3">
                                 <p class="card-text">
-                                    <button type="button" class="btn btn-outline-primary">{{product.color}}</button>
-                                    <button type="button" class="btn btn-outline-secondary">Xám</button>
-                                    <button type="button" class="btn btn-outline-success">Xanh lá</button>
-                                    <button type="button" class="btn btn-outline-danger">Đỏ</button>
-                                    <button type="button" class="btn btn-outline-warning">Vàng</button>
+                                    <button type="button" class="btn btn-outline-danger">{{product.color}}</button>
                                 </p>
                               </div>
                               <div class="card-text m-2 d-flex justify-content-flex-start">Số lượng: 1</div>
                               <div class="card-title m-2 d-flex justify-content-flex-start" style="color: #D41830;">Giá: đ {{product.price}}</div>
-                              <br/>
+                              <button type="button" class="btn btn-warning w-100">Trạng thái:   {{product.transport}}</button>
                             </div>
                           </div>
                           {% endfor %}

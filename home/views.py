@@ -78,7 +78,12 @@ def getAdd(request):
 
 
 def getCart(request):
-    cart = Cart.objects.all()
+    if request.method == 'POST':
+        cart = Cart.objects.all()
+        status = request.POST.get('data')
+        if(status != "all"):
+            cart = Cart.objects.filter( transport= status)
+            return render(request, 'pages/cart.html',{'product': cart})
     return render(request, 'pages/cart.html',{'product': cart})
 
 def createUser(request):
