@@ -5,7 +5,12 @@ from .models import User
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['userid', 'thumbnail', 'shortDescription', 'status','category','price']
+        fields = ['thumbnail', 'shortDescription', 'status','category','price']
+
+class ProductFormU(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['thumbnail', 'shortDescription', 'status','category','price']
 
 
 class UserForm(forms.ModelForm):

@@ -1,5 +1,5 @@
 {% extends "pages/base.html" %}
-{% block title %} Home {% endblock %}
+{% block title %} Manager {% endblock %}
 {% block content %}
         <div class= "d-flex justify-content-center">
             <div class="m-5 w-10">
@@ -20,23 +20,26 @@
                     <div class="card-header">
                       <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="true" href="#">Tất cả</a>
+                          <a class="nav-link disabled" aria-current="true" href="#">Tất cả</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Chờ thanh toán</a>
+                          <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Chờ thanh toán</a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Vận chuyển</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đang giao</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hoàn thành</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đã hủy</a>
-                        </li>
+                        <!-- {% if product.transport == "thanh-toan" %}
+                        {% else %}
+                        {% endif %} -->
+                          <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Vận chuyển</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đang giao</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hoàn thành</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Đã hủy</a>
+                          </li>
                       </ul>
                     </div>
                     <div class="card-body">
@@ -50,7 +53,7 @@
                               <h5 class="card-title">{{ product.shortDescription }}</h5>
                               <div class="d-flex justify-content-flex-start mt-5">
                                 <p class="card-text">
-                                    <button type="button" class="btn btn-outline-primary">Xanh dương</button>
+                                    <button type="button" class="btn btn-outline-primary">{{product.color}}</button>
                                     <button type="button" class="btn btn-outline-secondary">Xám</button>
                                     <button type="button" class="btn btn-outline-success">Xanh lá</button>
                                     <button type="button" class="btn btn-outline-danger">Đỏ</button>

@@ -21,8 +21,24 @@
                 <td class="w-50">{{ product.shortDescription }}</td>
                 <td class="w-10">{{ product.status }}</td>
                 <td class="w-10">{{ product.price }}</td>
-                <td class="w-10">v</td>
-                <td class="w-10">x</td>
+                <td class="w-10">
+                    <form method="post"  action="{% url 'home:admins' %}">
+                        {% csrf_token %}
+                        <button style=" border: none; background: none;" type="submit">
+                        <input type="hidden" id="data" name="data" value={{ product.id }} required>
+                           v
+                        </button>
+                    </form>
+                </td>
+                <td class="w-10">
+                    <form method="post"  action="{% url 'home:admins' %}">
+                        {% csrf_token %}
+                        <button style=" border: none; background: none;" type="submit">
+                        <input type="hidden" id="dataD" name="dataD" value={{ product.id }} required>
+                           x
+                        </button>
+                    </form>
+                </td>
             </tr>
          </tbody>
             {% endfor %}

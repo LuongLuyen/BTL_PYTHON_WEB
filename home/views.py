@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect
-from .models import Product,User
-from .forms import UserForm,ProductForm
+from django.shortcuts import render,redirect, get_object_or_404
+from .models import Product,User,Cart
+from .forms import UserForm,ProductForm,ProductFormU
 
 
 def getHome(request):
@@ -10,11 +10,11 @@ def getHome(request):
         search = request.POST.get('search')
         if(search!= None):
             product = Product.objects.all()
-            for item in product:
-               list = []
-               if search in item.shortDescription:
-                   list.append(item)
-                   return render(request, 'pages/home.html', {'product': list})
+            list = []
+            for x in product:
+               if search in x.shortDescription:
+                   list.append(x)
+            return render(request, 'pages/home.html', {'product': list})
         if(id!=None):
             product = Product.objects.get(id=id)
             return render(request, 'pages/product.html', {'product': product})
@@ -23,7 +23,6 @@ def getHome(request):
     else:
         product = Product.objects.all()
         return render(request, 'pages/home.html', {'product': product})
-
 
 def getLogin(request):
     if request.method == 'POST':
@@ -37,9 +36,9 @@ def getLogin(request):
                 return render(request, 'pages/home.html', {'product': product})
         except:
             return render(request, 'pages/login.html')
-
     else:
         return render(request, 'pages/login.html')
+
 
 def getProduct(request):
     if request.method == 'POST':
@@ -50,14 +49,37 @@ def getProduct(request):
     else:
         return render(request, 'pages/manage.html')
 
+
 def getAdmin(request):
     product = Product.objects.all()
+    if request.method == 'POST':
+        idU = request.POST.get('data')
+        idD = request.POST.get('dataD')
+        if(idD!=None):
+            product = get_object_or_404(Product, pk=idD)
+            product.delete()
+            return redirect('/admins')
+        productById = Product.objects.get(id=idU)
+        return render(request, 'pages/add.html', {'product': productById})
     return render(request, 'pages/admin.html', {'product': product})
+
+def getAdd(request):
+    if request.method == 'POST':
+        idD = request.POST.get('dataU')
+        product = get_object_or_404(Product, pk=idD)
+        form = ProductForm(request.POST, instance=product)
+        print(idD)
+        if form.is_valid():
+            form.save()
+            return redirect('/admins')
+    else:
+        form = ProductForm()
+    return render(request, 'pages/add.html', {'form': form})
+
+
 def getManage(request):
-    product = Product.objects.get(id=1)
-    return render(request, 'pages/manage.html',{'product': product})
-
-
+    cart = Cart.objects.get(id=2)
+    return render(request, 'pages/manage.html',{'product': cart})
 
 def createUser(request):
     if request.method == 'POST':

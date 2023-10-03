@@ -3,3 +3,6 @@ Insert into home_product(userId,thumbnail,shortDescription,status,category,price
 Insert into home_product(userId,thumbnail,shortDescription,status,category,price) values(1,'https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh26qcuwemer1d','Điện Thoại Di Động Xiaomi Redmi 10 5G 4GB/64GB - Chính hãng','190','dien-thoai',4100000);
 Insert into home_product(userId,thumbnail,shortDescription,status,category,price) values(1,'https://down-vn.img.susercontent.com/file/b09430e3c8c8dba7b6dc87d25cd8cb0e','Apple MacBook Air 13" 2020 (M1/8GB/256GB)','200','lap-top',19200000);
 Insert into home_product(userId,thumbnail,shortDescription,status,category,price) values(1,'https://down-vn.img.susercontent.com/file/sg-11134201-23010-gebxvte3rulva3','Tai nghe gaming tai nghe chụp tai có mic có đèn LED','200','tai-nghe',500000);
+
+Insert into home_cart(userId,thumbnail,shortDescription,transport,color,category,price) values(1,'https://down-vn.img.susercontent.com/file/b09430e3c8c8dba7b6dc87d25cd8cb0e','Apple MacBook Air 13" 2020 (M1/8GB/256GB)','van-chuyen','do','lap-top',19200000);
+Insert into home_cart(userId,thumbnail,shortDescription,transport,color,category,price) values(1,'https://down-vn.img.susercontent.com/file/sg-11134201-23010-gebxvte3rulva3','Tai nghe gaming tai nghe chụp tai có mic có đèn LED','thanh-toan','vang','tai-nghe',500000);
