@@ -50,14 +50,14 @@
                         <form method="post" action="{% url 'home:cart' %}">
                             {% csrf_token %}
                             <button style=" border: none; background: none; width: 100px;" type="submit">
-                            <input type="hidden" id="data" name="data" value="da-huy" required>
+                            <input type="hidden" id="data" name="data" value="hoan-thanh" required>
                             Hoàn thành
                             </button>
                           </form>
                         <form method="post" action="{% url 'home:cart' %}">
                             {% csrf_token %}
                             <button style=" border: none; background: none; width: 100px;" type="submit">
-                            <input type="hidden" id="data" name="data" value="ao-nam" required>
+                            <input type="hidden" id="data" name="data" value="da-huy" required>
                             Đã hủy
                             </button>
                           </form>
@@ -83,14 +83,21 @@
                               </div>
                               <div class="card-text m-2 d-flex justify-content-flex-start">Số lượng: 1</div>
                               <div class="card-title m-2 d-flex justify-content-flex-start" style="color: #D41830;">Giá: đ {{product.price}}</div>
+                              {% if product.transport %}
+                              
+                              {% else %}
+                              <form method="post" action="{% url 'home:cart' %}">
+                                {% csrf_token %}
+                                <button style=" border: none; background: none; width: 100px;" type="submit">
+                                <input type="hidden" id="data" name="dataId" value= {{product.id}} required>
+                                Xóa
+                                </button>
+                              </form>
+                          {% endif %}
                               <button type="button" class="btn btn-warning w-100">Trạng thái:   {{product.transport}}</button>
                             </div>
                           </div>
                           {% endfor %}
-                          <div class="d-flex justify-content-space-between w-100">
-                            <button type="button" class="btn btn-warning m-2">Mua ngay</button>
-                            <button type="button" class="btn btn-warning m-2">Tổng: xxxxx đ </button>
-                          </div>
                         </div>
                       </div>
                     </div>

@@ -1,12 +1,14 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import Product,User,Cart
-from .forms import UserForm,ProductForm,ProductFormU
-
+from .forms import UserForm,ProductForm
 
 def getHome(request):
     if request.method == 'POST':
         category = request.POST.get('data') 
         id = request.POST.get('id_product')
+        idG = request.POST.get('id_productG')
+        idUser = request.POST.get('idUser')
+      
         search = request.POST.get('search')
         if(search!= None):
             product = Product.objects.all()
@@ -18,12 +20,22 @@ def getHome(request):
         if(id!=None):
             product = Product.objects.get(id=id)
             return render(request, 'pages/product.html', {'product': product})
+        if(idG!=None and idUser!=None):
+            cart = Cart(userid=idUser,thumbnail="",shortDescription="",transport="",color="",category="",price="")
+            product = Product.objects.get(id=idG)
+            cart.shortDescription = product.shortDescription
+            cart.thumbnail = product.thumbnail
+            cart.transport = ""
+            cart.color = "None"
+            cart.category = product.category
+            cart.price = product.price
+            cart.save()
+            return redirect('/cart')
         product = Product.objects.filter(category=category)
         return render(request, 'pages/home.html', {'product': product})
     else:
         product = Product.objects.all()
         return render(request, 'pages/home.html', {'product': product})
-
 def getLogin(request):
     if request.method == 'POST':
         userName = request.POST.get('userName') 
@@ -33,7 +45,9 @@ def getLogin(request):
             passDB = User.objects.get(password=password)
             if(userDB!=None and passDB!=None):
                 product = Product.objects.all()
-                return render(request, 'pages/home.html', {'product': product})
+                user=[]
+                user= User.objects.filter(userName=userName,password=password)
+                return render(request, 'pages/home.html', {'product': product, 'other': user})
         except:
             return render(request, 'pages/login.html')
     else:
@@ -44,8 +58,16 @@ def getProduct(request):
     if request.method == 'POST':
         id = request.POST.get('id_product')
         if(id!=None):
+            cart = Cart(userid=1,thumbnail="",shortDescription="",transport="",color="",category="",price="")
             product = Product.objects.get(id=id)
-            return render(request, 'pages/cart.html', {'product': product})
+            cart.shortDescription = product.shortDescription
+            cart.thumbnail = product.thumbnail
+            cart.transport = ""
+            cart.color = "None"
+            cart.category = product.category
+            cart.price = product.price
+            cart.save()
+            return redirect('/cart')
     else:
         return render(request, 'pages/cart.html')
 
@@ -78,8 +100,13 @@ def getAdd(request):
 
 
 def getCart(request):
+    cart = Cart.objects.all()
     if request.method == 'POST':
-        cart = Cart.objects.all()
+        id = request.POST.get('dataId')
+        if(id !=None):
+            cart = get_object_or_404(Cart, pk=id)
+            cart.delete()
+            return redirect('/cart')
         status = request.POST.get('data')
         if(status != "all"):
             cart = Cart.objects.filter( transport= status)

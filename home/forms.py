@@ -7,7 +7,7 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['thumbnail', 'shortDescription', 'status','category','price']
 
-class ProductFormU(forms.ModelForm):
+class ProductFormI(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['thumbnail', 'shortDescription', 'status','category','price']
@@ -16,4 +16,4 @@ class ProductFormU(forms.ModelForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['userName', 'password', 'email']
+        fields = ['userName', 'password', 'email','role']

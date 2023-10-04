@@ -79,12 +79,13 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
+                 
                 </div>
+
 
                 <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
                     {% for product in product %}
-                    <form method="post" action="{% url 'home:home' %}">
-                        {% csrf_token %}
+                   
                             <div class="col">
                                 <div class="card h-100">
                                     <img src= {{ product.thumbnail }} class="card-img-top" alt="/">
@@ -93,18 +94,29 @@
                                         <p class="card-text">{{ product.shortDescription }}</p>
                                         <span class="card-title" style="color: #D41830;">Đã bán: {{ product.status }} sản phẩm</span>
                                     </div>
-                                    <input type="hidden" id="data" name="id_product" value={{ product.id }} required>
                                     <div class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-warning w-50 m-2">Mua ngay</button>
-                                        <a class="btn btn-danger w-50 m-2" href="/cart">
-                                        <button type="button" style=" border: none; background: none;">
-                                            Giỏ hàng
-                                        </button>
-                                    </a>
+                                        <form method="post" action="{% url 'home:home' %}">
+                                            {% csrf_token %}
+                                            <div style="margin-right: 40px;">
+                                                <button type="submit" class="btn btn-warning w-100 m-2">Mua ngay</button>
+                                                <input type="hidden" id="data" name="id_product" value={{ product.id }} required>
+                                            </div>
+                                       </form>
+                                        <form method="post" action="{% url 'home:home' %}">
+                                            {% csrf_token %}
+                                            <div style=" margin-left: 10px;">
+                                                <button type="submit" class="btn btn-danger w-100 m-2"> Giỏ hàng</button>
+                                                <input type="hidden" id="data" name="id_productG" value={{ product.id }} required>
+                                    
+                                                {% for other in other %}
+                                                <input type="hidden" id="data" name="idUser" value={{other.id}} required>
+                                               {% endfor %}
+                                            </div>
+                                       </form>
                                     </div>
                                 </div>
                             </div>
-                    </form>
+              
                     {% endfor %}
                 </div>
             </div>
