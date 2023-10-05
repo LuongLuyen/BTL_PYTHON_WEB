@@ -1,7 +1,9 @@
 # BTL_PYTHON_WEB
 ### author: Luong Luyen
 
-core Django, ui bootstrap
+core Django, 
+ui bootstrap
+database Mysql
 +login,logout,register, duy trì login 
 + phân quyền ADMIN USER
 + PageADMIN quyền thêm sữa xóa sản phẩm
