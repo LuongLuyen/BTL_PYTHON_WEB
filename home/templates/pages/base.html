@@ -14,7 +14,14 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light rounded-3" style="background-color: #39dbe9;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/home">Hưng SộpPy</a>
+                <form method="post" action="{% url 'home:home' %}">
+                    {% csrf_token %}
+                    <div style=" margin-left: 10px;">
+                        <input type="hidden" id="home" name="home" value="home" required>
+                        <button style=" border: none; background: none; width: 100px;" type="submit"> Hưng SộpPy</button>
+                    </div>
+               </form>
+            
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,9 +32,10 @@
                                 {{name}}
                             </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Đăng Ký</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
+                        {% if name == 'admin123' %}
+                        <li><a class="dropdown-item" href="/admins">ADMIN</a></li>
+                        {% else %}
+                        {% endif %}
                         <li><hr class="dropdown-divider"></li>
                         <li>
                         </li>

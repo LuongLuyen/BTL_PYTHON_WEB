@@ -7,11 +7,16 @@ from django.contrib.auth import logout
 def getHome(request):
     if request.method == 'POST':
         category = request.POST.get('data') 
+        home = request.POST.get('home') 
         id = request.POST.get('id_product')
         idG = request.POST.get('id_productG')
         idUser =  request.session['user_id']
        
         search = request.POST.get('search')
+        if(home !=None):
+            name =  request.session['name']
+            product = Product.objects.all()
+            return render(request, 'pages/home.html', {'product': product, 'name': name})
         if(search!= None):
             product = Product.objects.all()
             list = []
@@ -32,8 +37,8 @@ def getHome(request):
             cart.category = product.category
             cart.price = product.price
             cart.save()
-            cart = Cart.objects.filter(id=idUser)
-            return render(request, 'pages/cart.html', {'product': cart})
+            cartA = Cart.objects.filter(userid=idUser)
+            return render(request, 'pages/cart.html', {'product': cartA})
         product = Product.objects.filter(category=category)
         return render(request, 'pages/home.html', {'product': product})
     else:
@@ -70,6 +75,7 @@ def getProduct(request):
     name =  request.session['name']
     if request.method == 'POST':
         idUser =  request.session['user_id']
+        cartA = Cart.objects.filter(id=idUser)
         id = request.POST.get('idP')
         color = request.POST.get('color')
         if(id!=None and idUser!=None):
@@ -82,12 +88,54 @@ def getProduct(request):
             cart.category = product.category
             cart.price = product.price
             cart.save()
-            cart = Cart.objects.filter(id=idUser)
-            return render(request, 'pages/cart.html',{'product': cart,'name': name})
-        return render(request, 'pages/product.html')
+          
+            return render(request, 'pages/cart.html',{'product': cartA,'name': name})
+        return render(request, 'pages/product.html',{'product': cartA,'name': name})
     else:
         return render(request, 'pages/product.html')
 
+def getCart(request):
+    name =  request.session['name']
+    idUser =  request.session['user_id']
+    cart = Cart.objects.filter(userid=idUser)
+    if request.method == 'POST':
+        id = request.POST.get('dataId')
+        transport = request.POST.get('status')
+        transportid = request.POST.get('statusid')
+        status = request.POST.get('data')
+        if(transport== 'required'):
+            cart = Cart.objects.get( id= transportid)
+            cart.transport='thanh-toan'
+            cart.save()
+            cart = Cart.objects.filter( transport= 'thanh-toan',userid=idUser)
+            return render(request, 'pages/cart.html',{'product': cart, 'name': name})
+        if(transport=="thanh-toan"):
+            cart = Cart.objects.get( id= transportid)
+            cart.transport='van-chuyen'
+            cart.save()
+            cart = Cart.objects.filter( transport= 'van-chuyen',userid=idUser)
+            return render(request, 'pages/cart.html',{'product': cart, 'name': name})
+        if(transport=="van-chuyen"):
+            cart = Cart.objects.get( id= transportid)
+            cart.transport='dang-giao'
+            cart.save()
+            cart = Cart.objects.filter( transport= 'dang-giao',userid=idUser)
+            return render(request, 'pages/cart.html',{'product': cart, 'name': name})
+        if(transport=="dang-giao"):
+            cart = Cart.objects.get( id= transportid)
+            cart.transport='hoan-thanh'
+            cart.save()
+            cart = Cart.objects.filter( transport= 'hoan-thanh',userid=idUser)
+            return render(request, 'pages/cart.html',{'product': cart, 'name': name})
+        if(status != "all"):
+            cart = Cart.objects.filter( transport= status,userid=idUser)
+            return render(request, 'pages/cart.html',{'product': cart, 'name': name})
+       
+        if(id !=None):
+            cart = get_object_or_404(Cart, pk=id)
+            cart.delete()
+            return redirect('/cart')
+    return render(request, 'pages/cart.html',{'product': cart, 'name': name})
 
 def getAdmin(request):
     name =  request.session['name']
@@ -117,22 +165,6 @@ def getAdd(request):
         form = ProductForm()
     return render(request, 'pages/add.html', {'form': form, 'name': name})
 
-
-def getCart(request):
-    name =  request.session['name']
-    idUser =  request.session['user_id']
-    cart = Cart.objects.filter(userid=idUser)
-    if request.method == 'POST':
-        id = request.POST.get('dataId')
-        if(id !=None):
-            cart = get_object_or_404(Cart, pk=id)
-            cart.delete()
-            return redirect('/cart')
-        status = request.POST.get('data')
-        if(status != "all"):
-            cart = Cart.objects.filter( transport= status,userid=idUser)
-            return render(request, 'pages/cart.html',{'product': cart, 'name': name})
-    return render(request, 'pages/cart.html',{'product': cart, 'name': name})
 
 def createUser(request):
     if request.method == 'POST':
