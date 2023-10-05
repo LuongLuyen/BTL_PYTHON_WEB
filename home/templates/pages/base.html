@@ -22,15 +22,22 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {% for other in other %}
-                            {{other.userName}}
-                           {% endfor %}
+                                {{name}}
+                            </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Đăng Ký</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Đăng nhập</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/">Logout</a></li>
+                        <li>
+                        </li>
+                        <form method="post" action="{% url 'home:login' %}">
+                            {% csrf_token %}
+                            <div style=" margin-left: 10px;">
+                                <input type="hidden" id="dataOut" name="dataOut" value="dataOut" required>
+                                <button type="submit"> Logout</button>
+                            </div>
+                       </form>
                     </ul>
                     </li>
                 </ul>
