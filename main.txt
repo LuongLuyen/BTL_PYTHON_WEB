@@ -1,0 +1,12 @@
+# BTL_PYTHON_WEB
+### author: Luong Luyen
+
+core Django, ui bootstrap
++login,logout,register, duy trì login 
++ phân quyền ADMIN USER
++ PageADMIN quyền thêm sữa xóa sản phẩm
++ sort by name ,category
++ trạng thái đơn hàng
++ người dùng thêm sản phẩm vào giỏ hàng theo id của USER đó nếu chưa thanh toán thì có thể xóa sản phẩm, 
+còn nếu đã thanh toán trở đi các công đoạn sau không thể hủy
++ gồm 8 page
