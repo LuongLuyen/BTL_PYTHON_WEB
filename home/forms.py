@@ -7,11 +7,6 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['thumbnail', 'shortDescription', 'status','category','price']
 
-class ProductFormI(forms.ModelForm):
-    class Meta:
-        model = Product
-        fields = ['thumbnail', 'shortDescription', 'status','category','price']
-
 
 class UserForm(forms.ModelForm):
     class Meta:

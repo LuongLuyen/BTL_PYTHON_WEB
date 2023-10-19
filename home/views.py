@@ -99,10 +99,14 @@ def getCart(request):
     idUser =  request.session['user_id']
     cart = Cart.objects.filter(userid=idUser)
     if request.method == 'POST':
-        id = request.POST.get('dataId')
         transport = request.POST.get('status')
         transportid = request.POST.get('statusid')
         status = request.POST.get('data')
+        id = request.POST.get('dataId')
+        if(id !=None):
+            cart = get_object_or_404(Cart, pk=id)
+            cart.delete()
+            return redirect('/cart')
         if(transport== 'required'):
             cart = Cart.objects.get( id= transportid)
             cart.transport='thanh-toan'
@@ -130,11 +134,7 @@ def getCart(request):
         if(status != "all"):
             cart = Cart.objects.filter( transport= status,userid=idUser)
             return render(request, 'pages/cart.html',{'product': cart, 'name': name})
-       
-        if(id !=None):
-            cart = get_object_or_404(Cart, pk=id)
-            cart.delete()
-            return redirect('/cart')
+
     return render(request, 'pages/cart.html',{'product': cart, 'name': name})
 
 def getAdmin(request):
@@ -155,9 +155,13 @@ def getAdd(request):
     name =  request.session['name']
     if request.method == 'POST':
         idD = request.POST.get('dataU')
-        product = get_object_or_404(Product, pk=idD)
-        form = ProductForm(request.POST, instance=product)
-        print(idD)
+        if(idD!=None):
+            product = get_object_or_404(Product, pk=idD)
+            form = ProductForm(request.POST, instance=product)
+            if form.is_valid():
+                form.save()
+                return redirect('/admins')
+        form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/admins')

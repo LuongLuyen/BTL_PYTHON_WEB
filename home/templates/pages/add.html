@@ -49,7 +49,10 @@
             <label class="form-label" for="id_category">Thể loại</label>
             <input type="text" id="id_category" class="form-control" name="category" placeholder="ao-nam,dien-thoai,lap-top,tai-nghe" required />
         </div>
-        <input type="hidden" id="dataU" name="dataU" value={{ product.id }} required>
+        {% if product%}
+ 
+        <input type="hidden" id="dataU" name="dataU" value={{ product.id }}>
+      {% endif %}
         <button type="submit" class="w-10 btn btn-primary btn-block mb-4">
             Submit
         </button>
