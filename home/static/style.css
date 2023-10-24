@@ -1,0 +1,32 @@
+.app {
+    margin: 0 50px 0 50px;
+}
+.app__title{
+    color: #333;
+    display: flex;
+    justify-content: center;
+}
+.app__img{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+.app__imgd{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 50%;
+}
+.app__description{
+    display: flex;
+    justify-content: center;
+}
+.box {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 5px;
+    background-color: #575757;
+    width: 50%;
+}
+table, th, td {
+    border: 1px solid black;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo</title>
+</head>
+<body>
+    <div class="app">
+        <h1 class="app__title">Bản báo cáo bài tập lớn Python nhóm 05</h1>
+        <span>Thành viên :</span>
+        <table style="width: 100%;">
+            <tr>
+              <th>Họ và tên</th>
+              <th>Mã sinh viên</th>
+            </tr>
+            <tr>
+              <td>Lương Văn Luyện</td>
+              <td>B21DCCN504</td>
+            </tr>
+            <tr>
+              <td>Lê Đình Hưng</td>
+              <td>B21DCCN423</td>
+            </tr>
+        </table>
+        <div>Chủ đề : Làm web bán hàng thương mại điện tử. Mục đích : bán các mặt hàng quần áo, đồ điện tử, v.v...</div>
+        <div>Ngôn ngữ sử dụng : Python 3.</div>
+        <div>Công Nghệ sử dụng : </div>
+        <ul>
+            <li>UI:  Bootstrap, Template Django, Css</li>
+            <li>Core: Django</li>
+            <li>Database: Mysql</li>
+        </ul>
+        <div>Role: USER</div>
+        <ul>
+            <li>
+                <span>
+                    Page Register:
+                </span>
+                <div>
+                    <img class="app__img" src="{% static 'register.png' %}">
+                    <div class="app__description">
+                        <img class="app__imgd" src="{% static 'createUser.png' %}">
+                        <div class="box">box</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>
+                    Page Login:
+                </span>
+                <div>
+                    <img class="app__img" src="{% static 'login.png' %}">
+                    <div class="app__description">
+                        <img class="app__imgd" src="{% static 'getLogin.png' %}">
+                        <div class="box">box</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>
+                    Page Home:
+                </span>
+                <div>
+                    <img class="app__img" src="{% static 'home.png' %}">
+                    <div class="app__description">
+                        <img class="app__imgd" src="{% static 'getHome.png' %}">
+                        <div class="box">box</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>
+                    Page Product:
+                </span>
+                <div>
+                    <img class="app__img" src="{% static 'product.png' %}">
+                    <div class="app__description">
+                        <img class="app__imgd" src="{% static 'getProduct.png' %}">
+                        <div class="box">box</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>
+                    Page Cart:
+                </span>
+                <div>
+                    <img class="app__img" src="{% static 'cart.png' %}">
+                    <div class="app__description">
+                        <img class="app__imgd" src="{% static 'getCart.png' %}">
+                        <div class="box">box</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div>Role: ADMIN</div>
+        <span>Có thêm page</span>
+        <ul>
+            <li>
+                <span>
+                    Page Admin:
+                </span>
+                <div>
+                    <img class="app__img" src="{% static 'admin.png' %}">
+                    <div class="app__description">
+                        <img class="app__imgd" src="{% static 'getAdmin.png' %}">
+                        <div class="box">box</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span>
+                    Page Add && Update:
+                </span>
+                <div>
+                    <img class="app__img" src="{% static 'add.png' %}">
+                    <div class="app__description">
+                        <img class="app__imgd" src="{% static 'getAdd.png' %}">
+                        <div class="box">box</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div>Insert demo product</div>
+    </div>
+</body>
+</html>

@@ -8,6 +8,7 @@ urlpatterns = [
     path('admins/', views.getAdmin, name='admins'),
     path('cart/', views.getCart, name='cart'),
     path('', views.getLogin, name ='login'),
+    path('slide/', views.getSlide, name ='slide'),
     path('register/', views.createUser, name='register'),
 ]
   

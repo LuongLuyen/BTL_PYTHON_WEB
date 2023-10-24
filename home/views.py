@@ -75,7 +75,7 @@ def getProduct(request):
     name =  request.session['name']
     if request.method == 'POST':
         idUser =  request.session['user_id']
-        cartA = Cart.objects.filter(id=idUser)
+        cartA = Cart.objects.filter(userid=idUser)
         id = request.POST.get('idP')
         color = request.POST.get('color')
         if(id!=None and idUser!=None):
@@ -168,6 +168,8 @@ def getAdd(request):
     else:
         form = ProductForm()
     return render(request, 'pages/add.html', {'form': form, 'name': name})
+def getSlide(request):
+    return render(request, 'pages/pp.html')
 
 
 def createUser(request):

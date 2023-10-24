@@ -18,7 +18,7 @@
                     {% csrf_token %}
                     <div style=" margin-left: 10px;">
                         <input type="hidden" id="home" name="home" value="home" required>
-                        <button style=" border: none; background: none; width: 100px;" type="submit"> Hưng SộpPy</button>
+                        <button style=" border: none; background: none; width: 100px;" type="submit">SHOP</button>
                     </div>
                </form>
             
@@ -36,6 +36,7 @@
                         <li><a class="dropdown-item" href="/admins">ADMIN</a></li>
                         {% else %}
                         {% endif %}
+                        <li><a class="dropdown-item" href="/slide">Báo cáo BTL</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                         </li>
@@ -49,6 +50,7 @@
                     </ul>
                     </li>
                 </ul>
+
                 <form class="d-flex" method="post" action="{% url 'home:home' %}">
                     {% csrf_token %}
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id ="search" name ="search" required>
