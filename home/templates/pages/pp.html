@@ -10,8 +10,8 @@
 <body>
     <div class="app">
         <h1 class="app__title">Bản báo cáo bài tập lớn Python nhóm 05</h1>
-        <span>Thành viên :</span>
-        <table style="width: 100%;">
+        <span class="title">Thành viên :</span>
+        <table style="width: 100%; height: 150px;">
             <tr>
               <th>Họ và tên</th>
               <th>Mã sinh viên</th>
@@ -25,7 +25,7 @@
               <td>B21DCCN423</td>
             </tr>
         </table>
-        <div>Chủ đề : Làm web bán hàng thương mại điện tử. Mục đích : bán các mặt hàng quần áo, đồ điện tử, v.v...</div>
+        <div style="font-size:20px; margin: 20px 20px 20px 0;">Chủ đề : Làm web bán hàng thương mại điện tử. Mục đích : bán các mặt hàng quần áo, đồ điện tử, v.v...</div>
         <div>Ngôn ngữ sử dụng : Python 3.</div>
         <div>Công Nghệ sử dụng : </div>
         <ul>
@@ -33,98 +33,142 @@
             <li>Core: Django</li>
             <li>Database: Mysql</li>
         </ul>
-        <div>Role: USER</div>
+        <div class="title">Role: USER</div>
         <ul>
             <li>
-                <span>
+                <span class="title">
                     Page Register:
                 </span>
                 <div>
                     <img class="app__img" src="{% static 'register.png' %}">
                     <div class="app__description">
                         <img class="app__imgd" src="{% static 'createUser.png' %}">
-                        <div class="box">box</div>
+                        <div class="box">
+                            <div class="line">FORM có 2 method GET && POST (mặc định là GET còn submit là POST)</div>
+                            <div class="line">+ Khi submit form nhận được data, nếu đủ các trường dữ liệu thì save và điều hướng đến trang login</div>
+                            <div class="line">+ nếu thiếu data sẽ set form empty</div>
+                            <div class="line">+ nếu là method GET render view trang register</div>
+                        </div>
                     </div>
                 </div>
             </li>
             <li>
-                <span>
+                <span class="title">
                     Page Login:
                 </span>
                 <div>
                     <img class="app__img" src="{% static 'login.png' %}">
                     <div class="app__description">
                         <img class="app__imgd" src="{% static 'getLogin.png' %}">
-                        <div class="box">box</div>
+                        <div class="box">
+                            <div class="line">FORM có 2 method GET && POST (mặc định là GET còn submit là POST)</div>
+                            <div class="line">+ POST: - nếu có username password check user trong database => ĐÚNG select all các mặt hàng, lưu user vào lưu trữ phiên, render view home, if SAI render view login </div>
+                            <div class="line">+ POST: - nếu là đăng xuất xóa user khỏi lưu trữ phiên và điều hướng trang đến login</div>
+                            <div class="line">+ GET: -(Mặc định)  render view trang login</div>
+                        </div>
                     </div>
                 </div>
             </li>
             <li>
-                <span>
+                <span class="title">
                     Page Home:
                 </span>
                 <div>
                     <img class="app__img" src="{% static 'home.png' %}">
                     <div class="app__description">
                         <img class="app__imgd" src="{% static 'getHome.png' %}">
-                        <div class="box">box</div>
+                        <div class="box">
+                            <div class="line">FORM có 2 method GET && POST (mặc định là GET còn submit là POST)</div>
+                            <div class="line">+ POST: -  nhập vào thanh tìm kiếm submit => select all sản phẩm lặp qua từng sản phẩm nếu "input" nằm trong tên sản phẩm, add vào 1 list mới, render list đã có ra view home</div>
+                            <div class="line">+ POST: -  nhấn vào danh mục sản phẩm => select all theo danh muc</div>
+                            <div class="line">+ GET: -  nhấn vào giỏ hàng => điều hướng đến trang giỏ hàng hiển thị những sản phẩm đã thêm từ trước</div>
+                            <div class="line">+ POST: -  nhấn vào mua ngay => lấy sản phẩm theo id render view product</div>
+                            <div class="line">+ POST: -  nhấn vào nút giỏ hàng => lấy sản phẩm theo id, thêm trạng thái vận chuyển, idUser đăng nhập(ở lưu trữ phiên) render view cart</div>
+                            <div class="line">+ GET: -(Mặc định)  render view trang home</div>
+                        </div>
                     </div>
                 </div>
             </li>
             <li>
-                <span>
+                <span class="title">
                     Page Product:
                 </span>
                 <div>
                     <img class="app__img" src="{% static 'product.png' %}">
                     <div class="app__description">
                         <img class="app__imgd" src="{% static 'getProduct.png' %}">
-                        <div class="box">box</div>
+                        <div class="box">
+                            <div class="line">FORM có 2 method GET && POST (mặc định là GET còn submit là POST)</div>
+                            <div class="line">+ GET:(Mặc định) -  render sản phẩm từ hành động nhấn vào nút mua ngay ở trên</div>
+                            <div class="line">+ POST: -  chọn màu sắc nhấn mua => thêm trạng thái vận chuyển,idUser đăng nhập(ở lưu trữ phiên) render view cart</div>
+                            <div class="line">+ GET: -(Mặc định)  render view trang product</div>
+                        </div>
                     </div>
                 </div>
             </li>
             <li>
-                <span>
+                <span class="title">
                     Page Cart:
                 </span>
                 <div>
                     <img class="app__img" src="{% static 'cart.png' %}">
                     <div class="app__description">
                         <img class="app__imgd" src="{% static 'getCart.png' %}">
-                        <div class="box">box</div>
+                        <div class="box">
+                            <div class="line">FORM có 2 method GET && POST (mặc định là GET còn submit là POST)</div>
+                            <div>nếu là sản phẩm mới thêm chưa có trạng thái vận chuyển thì có thể xóa,ngược lại thì không</div>
+                            <div class="line">+ POST: -  submit => cập nhật trạng thái vận chuyển đơn hàng</div>
+                            <div class="line">+ POST: -  nhấn vào trạng thái => hiển thị các sản phẩm của user đang login và trạng thái mặt hàng đó</div>
+                            <div class="line">+ GET: -(Mặc định)  render view trang cart</div>
+                        </div>
                     </div>
                 </div>
             </li>
         </ul>
-        <div>Role: ADMIN</div>
+        <div class="title">Role: ADMIN</div>
         <span>Có thêm page</span>
         <ul>
             <li>
-                <span>
+                <span class="title">
                     Page Admin:
                 </span>
                 <div>
                     <img class="app__img" src="{% static 'admin.png' %}">
                     <div class="app__description">
                         <img class="app__imgd" src="{% static 'getAdmin.png' %}">
-                        <div class="box">box</div>
+                        <div class="box">
+                            <div class="line">FORM có 2 method GET && POST (mặc định là GET còn submit là POST)</div>
+                            <div class="line">+ POST: -  xóa => delete sản phẩm theo id</div>
+                            <div class="line">+ POST: -  sữa => lấy sản phẩm theo id render view trang Add(page dùng cho cả thêm mới và sữa)</div>
+                            <div class="line">+ GET: -(Mặc định)  render view trang admin</div>
+                        </div>
                     </div>
                 </div>
             </li>
             <li>
-                <span>
+                <span class="title">
                     Page Add && Update:
                 </span>
                 <div>
                     <img class="app__img" src="{% static 'add.png' %}">
                     <div class="app__description">
                         <img class="app__imgd" src="{% static 'getAdd.png' %}">
-                        <div class="box">box</div>
+                        <div class="box">
+                            <div class="line">FORM có 2 method GET && POST (mặc định là GET còn submit là POST)</div>
+                            <div class="line">nếu là add thì không có sản phẩm còn update thì có sản phẩm cần update</div>
+                            <div class="line">+ POST: -  submit => thêm mới ,update theo từng trường hợp</div>
+                            <div class="line">+ GET: -(Mặc định)  render view trang Add</div>
+                        </div>
                     </div>
                 </div>
             </li>
         </ul>
         <div>Insert demo product</div>
+        <div>Name: Test sản phẩm cho chức năng admin</div>
+        <div>Số lượng: 200</div>
+        <div>Giá: 299000</div>
+        <div>Link: https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lgx8rldb6l9ua1</div>
+        <div>Thể loại: ao-nam</div>
     </div>
 </body>
 </html>

@@ -1,3 +1,6 @@
+body {
+    background-color: #e6e4e4;
+}
 .app {
     margin: 0 50px 0 50px;
 }
@@ -26,6 +29,16 @@
     margin-left: 5px;
     background-color: #575757;
     width: 50%;
+    color: #fff;
+    padding: 10px;
+}
+.title {
+    font-size: 20px;
+    font-weight: 800;
+    padding: 10px;
+}
+.line {
+    margin: 10px;
 }
 table, th, td {
     border: 1px solid black;
