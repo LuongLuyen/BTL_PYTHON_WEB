@@ -2,7 +2,10 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+import subprocess
+javascript_executable = "node"
+javascript_file = "index.js"
+subprocess.run([javascript_executable, javascript_file])
 
 def main():
     """Run administrative tasks."""
